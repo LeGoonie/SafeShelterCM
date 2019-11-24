@@ -17,7 +17,6 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mTextPassword;
     EditText mTextCnfPassword;
     Button mButtonRegister;
-    TextView mTextViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
