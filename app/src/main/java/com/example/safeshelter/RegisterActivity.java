@@ -10,31 +10,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class HomeActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText mTextUsername;
     EditText mTextPassword;
-    Button mButtonLogin;
-    TextView mTextViewRegister;
+    EditText mTextCnfPassword;
+    Button mButtonRegister;
+    TextView mTextViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("SafeShelter");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_register);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mTextUsername = (EditText)findViewById(R.id.editText_username);
         mTextPassword = (EditText)findViewById(R.id.editText_password);
-        mButtonLogin = (Button)findViewById(R.id.button_login);
-        mTextViewRegister = (TextView)findViewById(R.id.textView_register);
-        mTextViewRegister.setOnClickListener(new View.OnClickListener(){
+        mTextCnfPassword = (EditText)findViewById(R.id.editText_cnf_password);
+        mButtonRegister = (Button)findViewById(R.id.button_login);
+        mTextViewLogin = (TextView)findViewById(R.id.textView_register);
+        mTextViewLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(HomeActivity.this, RegisterActivity.class);
+                Intent registerIntent = new Intent(RegisterActivity.this, HomeActivity.class);
                 startActivity(registerIntent);
             }
         });
