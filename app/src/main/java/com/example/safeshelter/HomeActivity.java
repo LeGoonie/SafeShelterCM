@@ -30,6 +30,13 @@ public class HomeActivity extends AppCompatActivity {
         mTextUsername = (EditText)findViewById(R.id.editText_username);
         mTextPassword = (EditText)findViewById(R.id.editText_password);
         mButtonLogin = (Button)findViewById(R.id.button_login);
+        mButtonLogin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, MainMenuActivity.class);
+                startActivity(intent);
+            }
+        });
         mTextViewRegister = (TextView)findViewById(R.id.textView_register);
         mTextViewRegister.setOnClickListener(new View.OnClickListener(){
             @Override

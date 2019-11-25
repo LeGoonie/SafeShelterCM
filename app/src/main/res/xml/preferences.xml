@@ -2,6 +2,10 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference
+
+    />
+
     <!--  BOTÃO SOS -->
     <CheckBoxPreference
         android:key="SOS_pref"

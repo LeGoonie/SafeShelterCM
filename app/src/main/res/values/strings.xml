@@ -1,7 +1,14 @@
 <resources>
-
-
     <string name="app_name">SafeShelter</string>
+
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_text">Register</string>
+    <string name="email_text">Email</string>
+    <string name="cnf_password_text">Confirm Password</string>
+    <string name="register_button">Register</string>
+    <string name="login_text">Login</string>
 
     <!--  BOTÃO SOS -->
     <string name="SOS_pref">Botao SOS</string>
