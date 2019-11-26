@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.view.ViewGroup;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -16,11 +17,6 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         setTitle("SafeShelter");
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MainSettingsFragment()).commit();
     }
