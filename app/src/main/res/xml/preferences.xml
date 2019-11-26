@@ -2,29 +2,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Preference
-        android:selectable="false"
-    />
-
     <!--  BOTÃO SOS -->
     <CheckBoxPreference
         android:key="SOS_pref"
         android:title="@string/SOS_pref"
         android:summary="@string/SOS_pref_summary"
-        android:defaultValue="true"/>
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"/>
 
     <!-- FILTRO APPS -->
     <MultiSelectListPreference
         android:key="AppFilter"
         android:title="@string/AppFilter"
         android:entries="@array/AppFilter_entries_Strings"
-        android:entryValues="@array/AppFilter_Type_Entries"/>
+        android:entryValues="@array/AppFilter_Type_Entries"
+        app:iconSpaceReserved="false"/>
 
     <!-- CODIGO PARENTAL -->
     <Preference
         android:key="dialog_preference"
         android:title="@string/Parental_Code"
-        android:summary="@string/Parental_Code_Summary"/>
+        android:summary="@string/Parental_Code_Summary"
+        app:iconSpaceReserved="false"/>
 
     <!-- CHAMADAS E SMS -->
     <MultiSelectListPreference
@@ -32,18 +31,21 @@
         android:title="@string/Calls_Texts_Permissions"
         android:summary="@string/Calls_Texts_Permissions_Summary"
         android:entries="@array/Calls_Texts_Permissions_Entries_Strings"
-        android:entryValues="@array/Calls_Texts_Permissions_Type_Entries"/>
+        android:entryValues="@array/Calls_Texts_Permissions_Type_Entries"
+        app:iconSpaceReserved="false"/>
 
     <!-- TIME LIMIT -->
     <Preference
         android:key="Time_Limit"
         android:title="@string/Time_Limit"
-        android:summary="@string/Time_Limit_Summary"/>
+        android:summary="@string/Time_Limit_Summary"
+        app:iconSpaceReserved="false"/>
 
     <!-- LOCALIZAÇÃO -->
     <Preference
         android:key="Location"
         android:title="@string/Location"
-        android:summary="@string/Location_Summary"/>
+        android:summary="@string/Location_Summary"
+        app:iconSpaceReserved="false"/>
 
 </PreferenceScreen>
