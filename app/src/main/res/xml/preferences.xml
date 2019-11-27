@@ -48,4 +48,31 @@
         android:summary="@string/Location_Summary"
         app:iconSpaceReserved="false"/>
 
+    <!-- PERFIL -->
+    <Preference
+        android:key="Profile"
+        android:title="@string/Profile"
+        android:summary="@string/Profile_Summary"
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.ProfileActivity"
+        />
+    </Preference>
+
+    <!-- LOG OUT -->
+    <Preference
+        android:key="Log_Out"
+        android:title="@string/Log_Out"
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.HomeActivity"
+            />
+    </Preference>
+
 </PreferenceScreen>
