@@ -9,9 +9,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SettingsActivity extends AppCompatActivity {
     public Preference profile_button;
     public static final String SHARED_PREFS = "sharedPrefs";
+
+    private FirebaseAuth mAuth;
+    private String user_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +26,14 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        user_email = user.getEmail();
     }
 
     public void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(user_email, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
     }
 }
