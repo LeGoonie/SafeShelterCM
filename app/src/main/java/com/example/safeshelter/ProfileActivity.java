@@ -36,7 +36,6 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user != null){
             //user is signed in stay here
-
             //set email of logged in user
             mProfileTv.setText(user.getEmail());
         } else{

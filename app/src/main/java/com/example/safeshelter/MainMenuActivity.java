@@ -26,9 +26,7 @@ public class MainMenuActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        settings_image = (ImageView) findViewById(R.id.Settings_Icon);
+        settings_image = findViewById(R.id.Settings_Icon);
         settings_image.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
