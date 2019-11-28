@@ -82,12 +82,14 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            //dismiss progress dialog
                             progressDialog.dismiss();
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(HomeActivity.this, MainMenuActivity.class));
                             finish();
                         } else {
+                            //dismiss progress dialog
                             progressDialog.dismiss();
                             // If sign in fails, display a message to the user.
                             Toast.makeText(HomeActivity.this, "Authentication failed.",
@@ -97,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
                 Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }

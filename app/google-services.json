@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "41567147780",
+    "firebase_url": "https://safeshelter-92ab1.firebaseio.com",
+    "project_id": "safeshelter-92ab1",
+    "storage_bucket": "safeshelter-92ab1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41567147780:android:8424de757a566963682251",
+        "android_client_info": {
+          "package_name": "com.example.safeshelter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41567147780-dj79knso1mjmlolet5nss9si2q5s6c51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "8c686a74729a5947f02844204c26870b04be025a"
+          }
+        },
+        {
+          "client_id": "41567147780-t2dmepf1dqthoha3kt8lo5vh81utd05g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjHjBMI8I3mhOOLG2YmSmHWu8y02H8H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41567147780-t2dmepf1dqthoha3kt8lo5vh81utd05g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
