@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <Preference
-
-    />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--  BOTÃO SOS -->
     <CheckBoxPreference
         android:key="SOS_pref"
         android:title="@string/SOS_pref"
         android:summary="@string/SOS_pref_summary"
-        android:defaultValue="true"/>
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"/>
 
     <!-- FILTRO APPS -->
     <MultiSelectListPreference
         android:key="AppFilter"
         android:title="@string/AppFilter"
         android:entries="@array/AppFilter_entries_Strings"
-        android:entryValues="@array/AppFilter_Type_Entries"/>
+        android:entryValues="@array/AppFilter_Type_Entries"
+        app:iconSpaceReserved="false"/>
 
     <!-- CODIGO PARENTAL -->
     <Preference
-        android:key="Parental_Code"
+        android:key="dialog_preference"
         android:title="@string/Parental_Code"
-        android:summary="@string/Parental_Code_Summary">
-
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetPackage="com.example.safeshelter"
-            android:targetClass="com.example.safeshelter.RegisterActivity"
-        />
-    </Preference>
+        android:summary="@string/Parental_Code_Summary"
+        app:iconSpaceReserved="false"/>
 
     <!-- CHAMADAS E SMS -->
     <MultiSelectListPreference
@@ -39,26 +31,55 @@
         android:title="@string/Calls_Texts_Permissions"
         android:summary="@string/Calls_Texts_Permissions_Summary"
         android:entries="@array/Calls_Texts_Permissions_Entries_Strings"
-        android:entryValues="@array/Calls_Texts_Permissions_Type_Entries"/>
+        android:entryValues="@array/Calls_Texts_Permissions_Type_Entries"
+        app:iconSpaceReserved="false"/>
 
     <!-- TIME LIMIT -->
     <Preference
         android:key="Time_Limit"
         android:title="@string/Time_Limit"
-        android:summary="@string/Time_Limit_Summary"/>
+        android:summary="@string/Time_Limit_Summary"
+        app:iconSpaceReserved="false"/>
 
     <!-- LOCALIZAÇÃO -->
     <Preference
         android:key="Location"
         android:title="@string/Location"
-        android:summary="@string/Location_Summary">
+        android:summary="@string/Location_Summary"
+        app:iconSpaceReserved="false">
+
+    <intent
+        android:action="android.intent.action.VIEW"
+        android:targetPackage="com.example.safeshelter"
+        android:targetClass="com.example.safeshelter.LocationActivity"
+        />
+    </Preference>
+
+    <!-- PERFIL -->
+    <Preference
+        android:key="Profile"
+        android:title="@string/Profile"
+        android:summary="@string/Profile_Summary"
+        app:iconSpaceReserved="false">
 
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.example.safeshelter"
-            android:targetClass="com.example.safeshelter.RegisterActivity"
+            android:targetClass="com.example.safeshelter.ProfileActivity"
         />
     </Preference>
 
+    <!-- LOG OUT -->
+    <Preference
+        android:key="Log_Out"
+        android:title="@string/Log_Out"
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.HomeActivity"
+            />
+    </Preference>
 
 </PreferenceScreen>

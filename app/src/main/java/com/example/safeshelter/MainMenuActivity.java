@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.content.SharedPreferences;
+
 
 public class MainMenuActivity extends AppCompatActivity {
     public ImageView settings_image;
@@ -23,6 +25,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         settings_image = (ImageView) findViewById(R.id.Settings_Icon);
         settings_image.setOnClickListener(new View.OnClickListener(){

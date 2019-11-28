@@ -1,36 +1,39 @@
 package com.example.safeshelter;
 
-import androidx.annotation.Nullable;
-import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.preference.Preference;
 
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
+    public Preference profile_button;
+    public static final String SHARED_PREFS = "sharedPrefs";
+
+    private FirebaseAuth mAuth;
+    private String user_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
 
-        setTitle("SafeShelter");
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new MainSettingsFragment()).commit();
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        user_email = user.getEmail();
     }
 
-    public static class MainSettingsFragment extends PreferenceFragment{
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            addPreferencesFromResource(R.xml.preferences);
-        }
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(user_email, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
     }
 }
