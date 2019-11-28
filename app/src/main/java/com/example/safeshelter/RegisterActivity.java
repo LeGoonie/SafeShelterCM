@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,6 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mTextPassword;
     EditText mTextCnfPassword;
     Button mButtonRegister;
-    TextView mTextViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +27,20 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mTextUsername = (EditText)findViewById(R.id.editText_username);
         mTextPassword = (EditText)findViewById(R.id.editText_password);
         mTextCnfPassword = (EditText)findViewById(R.id.editText_cnf_password);
         mButtonRegister = (Button)findViewById(R.id.button_login);
-        mTextViewLogin = (TextView)findViewById(R.id.textView_register);
-        mTextViewLogin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent registerIntent = new Intent(RegisterActivity.this, HomeActivity.class);
-                startActivity(registerIntent);
-            }
-        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

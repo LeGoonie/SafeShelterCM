@@ -2,6 +2,10 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference
+
+    />
+
     <!--  BOTÃO SOS -->
     <CheckBoxPreference
         android:key="SOS_pref"
@@ -18,9 +22,16 @@
 
     <!-- CODIGO PARENTAL -->
     <Preference
-        android:key="dialog_preference"
+        android:key="Parental_Code"
         android:title="@string/Parental_Code"
-        android:summary="@string/Parental_Code_Summary"/>
+        android:summary="@string/Parental_Code_Summary">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.RegisterActivity"
+        />
+    </Preference>
 
     <!-- CHAMADAS E SMS -->
     <MultiSelectListPreference
@@ -40,6 +51,14 @@
     <Preference
         android:key="Location"
         android:title="@string/Location"
-        android:summary="@string/Location_Summary"/>
+        android:summary="@string/Location_Summary">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.RegisterActivity"
+        />
+    </Preference>
+
 
 </PreferenceScreen>

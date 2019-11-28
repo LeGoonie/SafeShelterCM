@@ -5,7 +5,8 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="@drawable/gradient_background">
 
     <include
         android:id="@+id/toolbar"
@@ -63,6 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/login_button"
+        android:background="@drawable/roundedbutton"
+        android:textColor="#ED2939"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/register_text"
-        android:textColor="#F44336"
+        android:textColor="#999999"
         android:textColorLink="#00D30E0E"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
