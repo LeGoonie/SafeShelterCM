@@ -15,6 +15,46 @@
       },
       "oauth_client": [
         {
+          "client_id": "41567147780-g1otdjnu765omeupabqld8opovkplmv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "024cc7c20fa8fcaa2da653d9ac2aa346cf4c20ed"
+          }
+        },
+        {
+          "client_id": "41567147780-3mkv4blrdb0901lt9eul9eegi17judkv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "a31d3690584e7b8fa3fda28fbcefa5fe1872ad33"
+          }
+        },
+        {
+          "client_id": "41567147780-0d6lm8oenjrhm1frm6cggvb277ceh7kf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "ca2c9af3df7932a1a6fd0da44a744edc3dfff781"
+          }
+        },
+        {
+          "client_id": "41567147780-c1trgb7vvo65astvins2bh843jd9k0cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "37238211d00c0d8aab53d6948f75f4d5d25fabd0"
+          }
+        },
+        {
+          "client_id": "41567147780-d7fbsmhl5ne9j6a3j4o1kj8a8sede2tk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "11319159ed796a3f414f23545bb29961d2730829"
+          }
+        },
+        {
           "client_id": "41567147780-dj79knso1mjmlolet5nss9si2q5s6c51.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

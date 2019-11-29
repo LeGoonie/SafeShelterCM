@@ -44,12 +44,19 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         //init
         mTextUsername = findViewById(R.id.editText_username);
         mTextEmail = findViewById(R.id.editText_email);
         mTextPassword = findViewById(R.id.editText_password);
         mTextCnfPassword = findViewById(R.id.editText_cnf_password);
-        mButtonRegister = findViewById(R.id.button_login);
+        mButtonRegister = findViewById(R.id.button_register);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -115,11 +122,11 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == android.R.id.home){
             finish();
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

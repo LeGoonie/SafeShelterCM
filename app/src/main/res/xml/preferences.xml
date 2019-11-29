@@ -76,7 +76,7 @@
         app:iconSpaceReserved="false">
 
         <intent
-            android:action="android.intent.action.VIEW"
+            android:action="logout"
             android:targetPackage="com.example.safeshelter"
             android:targetClass="com.example.safeshelter.HomeActivity"
             />
