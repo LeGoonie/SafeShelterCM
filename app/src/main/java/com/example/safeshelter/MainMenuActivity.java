@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
@@ -30,7 +27,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
         settings_image = (ImageView) findViewById(R.id.Settings_Icon);
-        settings_image.setOnClickListener(new View.OnClickListener() {
+        settings_image = findViewById(R.id.Settings_Icon);
+        settings_image.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenuActivity.this, SettingsActivity.class);
