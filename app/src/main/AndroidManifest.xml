@@ -20,17 +20,19 @@
             android:theme="@style/SettingsTheme"
             android:parentActivityName=".MainMenuActivity"/>
 
-        <activity android:name=".MainMenuActivity" />
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".HomeActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <activity android:name=".MainMenuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+        <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 public class MainMenuActivity extends AppCompatActivity {
-    public ImageView settings_image;
+    public ImageView settings_image, youtube_kids_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
