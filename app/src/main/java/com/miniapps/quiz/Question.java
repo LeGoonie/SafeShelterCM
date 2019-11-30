@@ -65,18 +65,19 @@ public class Question {
         this.string = string;
     }
 
+
     public static List<Question> getQuestions(){
         List<Question> mList = new ArrayList<>();
 
-        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.lion,new String[]{""},new String[]{"Leão"}));
-        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.lion,new String[]{"Leão","Macaco","Baleia","Pássaro"},new String[]{"Leão"}));
-        mList.add(new Question(Type.CHECK,"Escolhe o animal da imagem",R.drawable.catanddog,new String[]{"Cão","Macaco","Leão","Gato"},new String[]{"Gato","Cão"}));
-        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.giraffe,new String[]{""},new String[]{"Girafa"}));
-        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.dog,new String[]{"Leão","Macaco","Girafa","Cão"},new String[]{"Cão"}));
-        mList.add(new Question(Type.CHECK,"Escolhe os animais da imagem",R.drawable.giraffeandelephant,new String[]{"Cão","Girafa","Leão","Elefante"},new String[]{"Girafa","Elefante"}));
-        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.dog,new String[]{""},new String[]{"Cão"}));
-        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.elephant,new String[]{"Elefante","Macaco","Girafa","Cão"},new String[]{"Elefante"}));
-        mList.add(new Question(Type.CHECK,"Escolhe os animais da imagem",R.drawable.monkeyandlion,new String[]{"Cão","Macaco","Leão","Elefante"},new String[]{"Macaco","Leão"}));
+        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.lion,new String[]{""},new String[]{"leão"}));
+        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.lion,new String[]{"leão","macaco","baleia","pássaro"},new String[]{"leão"}));
+        mList.add(new Question(Type.CHECK,"Escolhe o animal da imagem",R.drawable.catanddog,new String[]{"cão","macaco","leão","gato"},new String[]{"gato","cão"}));
+        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.giraffe,new String[]{""},new String[]{"girafa"}));
+        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.dog,new String[]{"leão","macaco","girafa","cão"},new String[]{"cão"}));
+        mList.add(new Question(Type.CHECK,"Escolhe os animais da imagem",R.drawable.giraffeandelephant,new String[]{"cão","girafa","leão","elefante"},new String[]{"girafa","elefante"}));
+        mList.add(new Question(Type.TEXT,"Escreve o nome do animal",R.drawable.dog,new String[]{""},new String[]{"cão"}));
+        mList.add(new Question(Type.RADIO,"Qual é o nome do animal?",R.drawable.elephant,new String[]{"elefante","macaco","girafa","cão"},new String[]{"elefante"}));
+        mList.add(new Question(Type.CHECK,"Escolhe os animais da imagem",R.drawable.monkeyandlion,new String[]{"cão","macaco","leão","elefante"},new String[]{"macaco","leão"}));
 
         return mList;
     }
