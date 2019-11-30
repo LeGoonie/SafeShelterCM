@@ -32,7 +32,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-        /*setTitle("SafeShelter");
+        setTitle("SafeShelter");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,10 +45,9 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 Intent intent = new Intent(LocationActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
-        SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
@@ -77,11 +76,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void showDefaultLocation() {
-        Toast.makeText(this, "Location permission not granted, " +
-                        "showing default location",
-                Toast.LENGTH_SHORT).show();
-        LatLng redmond = new LatLng(47.6739881, -122.121512);
-        map.moveCamera(CameraUpdateFactory.newLatLng(redmond));
+        Toast.makeText(this, "Location permission not granted", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -100,6 +95,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         }
     }
+
 
     private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =
             new GoogleMap.OnMyLocationButtonClickListener() {
