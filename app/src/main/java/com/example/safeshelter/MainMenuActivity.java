@@ -14,9 +14,11 @@ import android.widget.ImageView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.miniapps.quiz.QuizActivity;
+
 
 public class MainMenuActivity extends AppCompatActivity {
-    public ImageView settings_image, youtube_kids_image;
+    public ImageView settings_image, youtube_kids_image, quiz_app_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,15 @@ public class MainMenuActivity extends AppCompatActivity {
                     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
                     startActivity(launchIntent);
                 }
+            }
+        });
+
+        quiz_app_image = (ImageView) findViewById(R.id.quizApp);
+        quiz_app_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenuActivity.this, QuizActivity.class);
+                startActivity(intent);
             }
         });
     }
