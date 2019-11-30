@@ -1,15 +1,9 @@
 package com.example.safeshelter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,10 +15,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText mTextUsername, mTextEmail, mTextPassword;
+    EditText mTextName, mTextChildName, mTextEmail, mTextPassword;
     EditText mTextCnfPassword;
     Button mButtonRegister;
 
@@ -52,7 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //init
-        mTextUsername = findViewById(R.id.editText_username);
+        mTextName = findViewById(R.id.editText_name);
+        mTextChildName = findViewById(R.id.editText_childName);
         mTextEmail = findViewById(R.id.editText_email);
         mTextPassword = findViewById(R.id.editText_password);
         mTextCnfPassword = findViewById(R.id.editText_cnf_password);
@@ -70,6 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //input email,password
                 String email = mTextEmail.getText().toString().trim();
+                String name = mTextName.getText().toString().trim();
+                String childName = mTextChildName.getText().toString().trim();
                 String password = mTextPassword.getText().toString().trim();
                 String cnfPassword = mTextCnfPassword.getText().toString().trim();
                 //validate
@@ -77,7 +82,15 @@ public class RegisterActivity extends AppCompatActivity {
                     //set error to email editText
                     mTextEmail.setError("Invalid Email");
                     mTextEmail.setFocusable(true);
-                } else if (password.length()<6){
+                } else if (name.length() == 0){
+                    //set error to name editText
+                    mTextName.setError("Parent Name Must Be Entered");
+                    mTextName.setFocusable(true);
+                } else if (childName.length() == 0){
+                    //set error to child's name editText
+                    mTextChildName.setError("Child's Name Must Be Entered");
+                    mTextChildName.setFocusable(true);
+                }else if (password.length()<6){
                     //set error to password editText
                     mTextPassword.setError("Password length at least 6 characters");
                     mTextPassword.setFocusable(true);
@@ -103,7 +116,27 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             progressDialog.dismiss();
+
                             FirebaseUser user = mAuth.getCurrentUser();
+                            //Get user email and user id from auth
+                            String email = user.getEmail();
+                            String uid = user.getUid();
+                            //When user is registered, store user info in firebase realtime database
+                            HashMap<Object, String> hashMap = new HashMap<>();
+                            //put info in hashmap
+                            hashMap.put("email", email);
+                            hashMap.put("uid", uid);
+                            hashMap.put("parentName", mTextName.getText().toString().trim());
+                            hashMap.put("childrenName", mTextChildName.getText().toString().trim());
+                            hashMap.put("permittedApps", "");
+                            hashMap.put("locationHistory", "");
+                            //firebase database instance
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            //path to store user data named "Users"
+                            DatabaseReference reference = database.getReference("Users");
+                            //put data with hashmap in database
+                            reference.child(uid).setValue(hashMap);
+
                             Toast.makeText(RegisterActivity.this, "Registered...\n"+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
                             finish();
@@ -121,12 +154,4 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == android.R.id.home){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 }

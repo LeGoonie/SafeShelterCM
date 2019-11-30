@@ -10,25 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ProfileActivity"></activity>
+        //Profile Activity
+        <activity android:name=".ProfileActivity"/>
 
-
+        //Settings Activity
         <activity android:name=".SettingsActivity"
             android:theme="@style/SettingsTheme"
             android:parentActivityName=".MainMenuActivity"/>
 
-        <activity android:name=".MainMenuActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        //Main Menu Activity
+        <activity android:name=".MainMenuActivity"/>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        //Register Activity
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".HomeActivity" />
+
+        //Login Activity
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".MainActivity" />
+
+        //Splash Screen
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
