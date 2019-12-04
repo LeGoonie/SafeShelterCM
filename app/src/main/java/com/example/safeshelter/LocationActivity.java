@@ -7,14 +7,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -49,7 +51,9 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap){
@@ -62,16 +66,30 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         map.setMinZoomPreference(11);
     }
 
+    //Pedido de Permissões
     private void enableMyLocationIfPermitted() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else if (map != null) {
             map.setMyLocationEnabled(true);
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            if (myLocation == null) {
+                Criteria criteria = new Criteria();
+                criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+                String provider = lm.getBestProvider(criteria, true);
+                myLocation = lm.getLastKnownLocation(provider);
+            }
+
+            if (myLocation != null) {
+                LatLng userLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+                this.map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 14), 1500, null);
+            }
         }
     }
 
@@ -80,8 +98,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case LOCATION_PERMISSION_REQUEST_CODE: {
                 if (grantResults.length > 0
@@ -96,32 +113,25 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         }
     }
 
-
-    private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =
-            new GoogleMap.OnMyLocationButtonClickListener() {
-                @Override
-                public boolean onMyLocationButtonClick() {
-                    map.setMinZoomPreference(15);
-                    return false;
-                }
-            };
+    private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener = new GoogleMap.OnMyLocationButtonClickListener() {
+        @Override
+        public boolean onMyLocationButtonClick() {
+            map.setMinZoomPreference(15);
+            return false;
+        }
+    };
 
     private GoogleMap.OnMyLocationClickListener onMyLocationClickListener = new GoogleMap.OnMyLocationClickListener() {
-                @Override
-                public void onMyLocationClick(@NonNull Location location) {
+        @Override
+        public void onMyLocationClick(@NonNull Location location) {
 
-                    map.setMinZoomPreference(12);
+            map.setMinZoomPreference(15);
 
-                    CircleOptions circleOptions = new CircleOptions();
-                    circleOptions.center(new LatLng(location.getLatitude(),
-                            location.getLongitude()));
+            CircleOptions circleOptions = new CircleOptions();
+            circleOptions.center(new LatLng(location.getLatitude(),
+                    location.getLongitude()));
 
-                    circleOptions.radius(200);
-                    circleOptions.fillColor(Color.RED);
-                    circleOptions.strokeWidth(6);
-
-                    map.addCircle(circleOptions);
-                }
-            };
-
+            map.addCircle(circleOptions);
+        }
+    };
 }
