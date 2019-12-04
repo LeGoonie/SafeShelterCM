@@ -83,4 +83,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="child_name_text">Child\'s Name</string>
 
+    <!-- Quiz app -->
+    <string name="question_number">1/9</string>
+    <string name="question_label">Pergunta</string>
+    <string name="btn_sumbit">Inserir</string>
+    <string name="checkbox_label">Resposta</string>
+    <string name="radio_label">Resposta</string>
+    <string name="edit_text_hint">Insere a resposta aqui ..</string>
 </resources>

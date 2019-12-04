@@ -1,9 +1,15 @@
 package com.example.safeshelter;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Registering User...");
 
         //register btn click
-        mButtonRegister.setOnClickListener(new View.OnClickListener(){
+        mButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //input email,password
@@ -78,23 +84,23 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = mTextPassword.getText().toString().trim();
                 String cnfPassword = mTextCnfPassword.getText().toString().trim();
                 //validate
-                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     //set error to email editText
                     mTextEmail.setError("Invalid Email");
                     mTextEmail.setFocusable(true);
-                } else if (name.length() == 0){
+                } else if (name.length() == 0) {
                     //set error to name editText
                     mTextName.setError("Parent Name Must Be Entered");
                     mTextName.setFocusable(true);
-                } else if (childName.length() == 0){
+                } else if (childName.length() == 0) {
                     //set error to child's name editText
                     mTextChildName.setError("Child's Name Must Be Entered");
                     mTextChildName.setFocusable(true);
-                }else if (password.length()<6){
+                } else if (password.length() < 6) {
                     //set error to password editText
                     mTextPassword.setError("Password length at least 6 characters");
                     mTextPassword.setFocusable(true);
-                } else if(!(password.equals(cnfPassword))){
+                } else if (!(password.equals(cnfPassword))) {
                     //set error to confirmation password editText
                     mTextCnfPassword.setError("Confirmation password does not match with the password");
                 } else {
@@ -137,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
                             //put data with hashmap in database
                             reference.child(uid).setValue(hashMap);
 
-                            Toast.makeText(RegisterActivity.this, "Registered...\n"+user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registered...\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
                             finish();
                         } else {
@@ -150,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
