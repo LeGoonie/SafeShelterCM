@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.miniapps.quiz.MainQuizActivity;
 import com.miniapps.quiz.QuizActivity;
 
 
@@ -56,7 +57,7 @@ public class MainMenuActivity extends AppCompatActivity {
         quiz_app_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, QuizActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, MainQuizActivity.class);
                 startActivity(intent);
             }
         });
