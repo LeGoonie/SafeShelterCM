@@ -35,17 +35,30 @@
         tools:ignore="VectorDrawableCompat" />
 
     <EditText
-        android:id="@+id/editText_username"
+        android:id="@+id/editText_name"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:ems="10"
-        android:hint="@string/username_text"
+        android:hint="@string/name_text"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/Login_Icon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Login_Icon"
         app:layout_constraintTop_toTopOf="@+id/Login_Icon" />
+
+    <EditText
+        android:id="@+id/editText_childName"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/child_name_text"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_name" />
 
     <EditText
         android:id="@+id/editText_email"
@@ -56,9 +69,9 @@
         android:hint="@string/email_text"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_username" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_childName" />
 
     <EditText
         android:id="@+id/editText_password"

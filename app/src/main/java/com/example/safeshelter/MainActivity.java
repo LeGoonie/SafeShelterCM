@@ -1,10 +1,12 @@
 package com.example.safeshelter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,9 +22,13 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(homeIntent);
-                finish();
+                if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
+                    finish();
+                }
             }
         }, SPLASH_TIMEOUT);
     }

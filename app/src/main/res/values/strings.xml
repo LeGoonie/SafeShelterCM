@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SafeShelter</string>
 
-    <string name="username_text">Username</string>
+    <string name="name_text">Username</string>
     <string name="password_text">Password</string>
     <string name="login_button">Login</string>
     <string name="register_text">Register</string>
@@ -81,6 +81,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="child_name_text">Child\'s Name</string>
 
     <!-- Quiz app -->
     <string name="question_number">1/9</string>

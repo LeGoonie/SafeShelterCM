@@ -11,23 +11,34 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.miniapps.quiz.MainQuizActivity"></activity>
         <activity android:name="com.miniapps.quiz.QuizActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainMenuActivity"
-            android:theme="@style/SettingsTheme" />
-        <activity android:name=".MainMenuActivity" />
+
+
+        <!--Profile Activity-->
+        <activity android:name=".ProfileActivity"/>
+
+        <!--Settings Activity-->
+        <activity android:name=".SettingsActivity"
+            android:theme="@style/SettingsTheme"
+            android:parentActivityName=".MainMenuActivity"/>
+
+        <!--Main Menu Activity-->
+        <activity android:name=".MainMenuActivity"/>
+
+        <!--Register Activity-->
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".HomeActivity">
+
+        <!--Login Activity-->
+        <activity android:name=".HomeActivity"/>
+
+        <!--Splash Screen-->
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
