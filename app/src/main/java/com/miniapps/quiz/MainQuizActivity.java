@@ -12,7 +12,7 @@ import com.example.safeshelter.R;
 
 public class MainQuizActivity extends AppCompatActivity {
 
-    public ImageView play_image;
+    public ImageView play_image, sair_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,15 @@ public class MainQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainQuizActivity.this, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sair_image = (ImageView) findViewById(R.id.quitButton);
+        sair_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainQuizActivity.this, MainMenuActivity.class);
                 startActivity(intent);
             }
         });
