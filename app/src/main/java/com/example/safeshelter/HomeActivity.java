@@ -213,7 +213,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
                 Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -232,7 +231,6 @@ public class HomeActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Toast.makeText(this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                // ...
             }
         }
     }
