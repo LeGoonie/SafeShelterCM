@@ -134,6 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                             hashMap.put("uid", uid);
                             hashMap.put("parentName", mTextName.getText().toString().trim());
                             hashMap.put("childrenName", mTextChildName.getText().toString().trim());
+                            hashMap.put("parentalCode", "");
                             hashMap.put("permittedApps", "");
                             hashMap.put("locationHistory", "");
                             //firebase database instance
@@ -144,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
                             reference.child(uid).setValue(hashMap);
 
                             Toast.makeText(RegisterActivity.this, "Registered...\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, ChooseParentalCode.class));
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
