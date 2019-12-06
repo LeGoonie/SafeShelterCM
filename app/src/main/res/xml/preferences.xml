@@ -52,7 +52,14 @@
         android:key="Location"
         android:title="@string/Location"
         android:summary="@string/Location_Summary"
-        app:iconSpaceReserved="false"/>
+        app:iconSpaceReserved="false">
+
+    <intent
+        android:action="android.intent.action.VIEW"
+        android:targetPackage="com.example.safeshelter"
+        android:targetClass="com.example.safeshelter.LocationActivity"
+        />
+    </Preference>
 
     <!-- PERFIL -->
     <Preference
