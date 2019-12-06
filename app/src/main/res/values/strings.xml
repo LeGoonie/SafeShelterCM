@@ -14,9 +14,6 @@
     <string name="SOS_pref">Botao SOS</string>
     <string name="SOS_pref_summary">Comunições em caso de emergência</string>
 
-    <!-- Change Parental Code -->
-    <string name="change_parental_code">Change Parental Code</string>
-
     <!-- FILTRO APPS -->
     <string name="AppFilter">Filtro de Apps</string>
     <string-array name="AppFilter_Type_Entries">
