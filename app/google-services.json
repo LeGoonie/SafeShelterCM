@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "41567147780-g1otdjnu765omeupabqld8opovkplmv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safeshelter",
+            "certificate_hash": "024cc7c20fa8fcaa2da653d9ac2aa346cf4c20ed"
+          }
+        },
+        {
           "client_id": "41567147780-3mkv4blrdb0901lt9eul9eegi17judkv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

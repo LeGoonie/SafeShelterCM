@@ -10,6 +10,19 @@
         android:defaultValue="true"
         app:iconSpaceReserved="false"/>
 
+    <!-- Change Parental Code -->
+    <Preference
+        android:key="Parental_Code"
+        android:title="@string/change_parental_code"
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="chooseParentalCode"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.ChooseParentalCode"
+            />
+    </Preference>
+
     <!-- FILTRO APPS -->
     <MultiSelectListPreference
         android:key="AppFilter"

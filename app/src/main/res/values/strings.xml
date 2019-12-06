@@ -14,6 +14,9 @@
     <string name="SOS_pref">Botao SOS</string>
     <string name="SOS_pref_summary">Comunições em caso de emergência</string>
 
+    <!-- Change Parental Code -->
+    <string name="change_parental_code">Change Parental Code</string>
+
     <!-- FILTRO APPS -->
     <string name="AppFilter">Filtro de Apps</string>
     <string-array name="AppFilter_Type_Entries">
@@ -90,4 +93,10 @@
     <string name="checkbox_label">Resposta</string>
     <string name="radio_label">Resposta</string>
     <string name="edit_text_hint">Insere a resposta aqui ..</string>
+
+    <!-- Choose Parental Code -->
+    <string name="choose_code">Choose Parental Code</string>
+    <string name="first_code">Insira o código parental</string>
+    <string name="second_code">Insira novamente o código parental</string>
+    <string name="submit_code">Definir código</string>
 </resources>
