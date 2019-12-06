@@ -9,33 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.miniapps.quiz.MainQuizActivity"></activity>
-        <activity android:name="com.miniapps.quiz.QuizActivity" />
-
-
-        <!--Profile Activity-->
-        <activity android:name=".ProfileActivity"/>
-
-        <!--Settings Activity-->
-        <activity android:name=".SettingsActivity"
-            android:theme="@style/SettingsTheme"
-            android:parentActivityName=".MainMenuActivity"/>
-
-        <!--Main Menu Activity-->
-        <activity android:name=".MainMenuActivity"/>
-
-        <!--Register Activity-->
+        <activity android:name=".ChooseParentalCode"></activity>
+        <activity android:name="com.miniapps.quiz.MainQuizActivity" />
+        <activity android:name="com.miniapps.quiz.QuizActivity" /> <!-- Profile Activity -->
+        <activity android:name=".ProfileActivity" /> <!-- Settings Activity -->
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/SettingsTheme" /> <!-- Main Menu Activity -->
+        <activity android:name=".MainMenuActivity" /> <!-- Register Activity -->
         <activity
             android:name=".RegisterActivity"
-            android:parentActivityName=".HomeActivity" />
-
-        <!--Login Activity-->
-        <activity android:name=".HomeActivity"/>
-
-        <!--Splash Screen-->
+            android:parentActivityName=".HomeActivity" /> <!-- Login Activity -->
+        <activity android:name=".HomeActivity" /> <!-- Splash Screen -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
