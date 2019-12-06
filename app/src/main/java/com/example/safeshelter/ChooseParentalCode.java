@@ -36,7 +36,8 @@ public class ChooseParentalCode extends AppCompatActivity {
         define_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ChooseParentalCode.this, MainMenuActivity.class);
+                startActivity(intent);
             }
         });
     }

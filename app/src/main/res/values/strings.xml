@@ -96,4 +96,10 @@
     <string name="first_code">Insira o código parental</string>
     <string name="second_code">Insira novamente o código parental</string>
     <string name="submit_code">Definir código</string>
+
+    <!-- Change Parental Code -->
+    <string name="change_code">Change Parental Code</string>
+    <string name="change_first_code">Insira o código parental atual</string>
+    <string name="change_second_code">Insira o novo código parental</string>
+    <string name="submit_change_code">Mudar código</string>
 </resources>

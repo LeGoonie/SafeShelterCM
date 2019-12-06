@@ -28,7 +28,7 @@
         <intent
             android:action="chooseParentalCode"
             android:targetPackage="com.example.safeshelter"
-            android:targetClass="com.example.safeshelter.ChooseParentalCode" />
+            android:targetClass="com.example.safeshelter.ChangeParentalCode" />
     </Preference>
 
     <!-- CHAMADAS E SMS -->
