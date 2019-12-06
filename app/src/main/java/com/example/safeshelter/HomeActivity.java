@@ -256,6 +256,7 @@ public class HomeActivity extends AppCompatActivity {
                             hashMap.put("parentName", "");
                             hashMap.put("childrenName", "");
                             hashMap.put("permittedApps", "");
+                            hashMap.put("permittedApps", "");
                             hashMap.put("locationHistory", "");
                             //firebase database instance
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
