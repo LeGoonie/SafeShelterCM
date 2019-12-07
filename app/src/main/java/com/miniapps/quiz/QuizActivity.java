@@ -2,7 +2,11 @@ package com.miniapps.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.os.Bundle;
@@ -18,7 +22,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.safeshelter.MainMenuActivity;
 import com.example.safeshelter.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +35,7 @@ public class QuizActivity extends AppCompatActivity {
 
         TextView mTextViewQuestionNumber;
         TextView mTextViewQuestion;
+        TextView textView;
         ImageView mImageViewQuestion;
         FrameLayout mFrameLayoutAnswersArea;
         Button mButtonSubmit;
@@ -42,6 +50,7 @@ public class QuizActivity extends AppCompatActivity {
         CheckBox mCheckBox3;
         CheckBox mCheckBox4;
         List<Question> mQuestions;
+        ImageView imView;
         int questionNumber = 0;
         int mUserScore = 0;
 
@@ -75,7 +84,7 @@ public class QuizActivity extends AppCompatActivity {
                         if(questionNumber < mQuestions.size())
                             updateUiWithQuestion(mQuestions.get(questionNumber));
                     } else {
-                        Toast.makeText(QuizActivity.this, "Your Score is " + mUserScore + "/9", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuizActivity.this, "A tua pontuação é " + mUserScore + "/" +mQuestions.size(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -130,26 +139,32 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         public void gradeQuestion(Question mQuestion) {
+            String tempVar = "errada";
 
             // Switch on question type to display the correct answers area
             switch (mQuestion.getType()) {
                 case TEXT:
                     String userAnswer = mEditText.getText().toString().toLowerCase();
+                    userAnswer = userAnswer.replaceAll("\\s", "");
+                    Log.d("bla", "userAnswer: "+ userAnswer);
                     if (userAnswer.equals("")) {
-                        Toast.makeText(this, "please enter an answer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Introduz uma resposta", Toast.LENGTH_SHORT).show();
                         return;
                     } else if (userAnswer.equals(mQuestion.getCorrectAnswers()[0])) {
                         //Correct answer increment user score
-                        Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show();
                         mUserScore++;
+                        tempVar = "certa";
                     }
                     break;
                 case RADIO:
                     RadioButton radioButtonUserAnswer;
                     if (mRadioGroup.getCheckedRadioButtonId() != -1) {
                         radioButtonUserAnswer = (RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId());
-                        if (radioButtonUserAnswer.getText().toString().toLowerCase().equals(mQuestion.getCorrectAnswers()[0]))
+                        if (radioButtonUserAnswer.getText().toString().toLowerCase().equals(mQuestion.getCorrectAnswers()[0])) {
                             mUserScore++;
+                            tempVar = "certa";
+                        }
                     } else {
                         Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
                         return;
@@ -173,16 +188,46 @@ public class QuizActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    if (correctAnswer)
+                    if (correctAnswer) {
                         mUserScore++;
+                        tempVar = "certa";
+                    }
                     break;
                 default:
                     //Correct answer increment user score
                     Toast.makeText(this, "Error Undefined Question", Toast.LENGTH_SHORT).show();
                     break;
             }
-            Toast.makeText(this, "score : " + mUserScore, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "A resposta está " + tempVar, Toast.LENGTH_SHORT).show();
             questionNumber++;
+
+            if(questionNumber == mQuestions.size()){
+                mFrameLayoutAnswersArea.removeAllViews();
+                mImageViewQuestion.setVisibility(View.GONE);
+                mButtonSubmit.setVisibility(View.GONE);
+                mTextViewQuestion.setVisibility(View.GONE);
+                textView = new TextView(this);
+                String scoreString = "Score: " + mUserScore;
+                textView.setText(scoreString);
+                FrameLayout.LayoutParams paramsText = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                paramsText.setMargins(100, 0, 100, 200);
+                textView.setLayoutParams(paramsText);
+                imView = new ImageView(this);
+                imView.setImageResource(R.drawable.sair_kids);
+                imView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(QuizActivity.this, MainQuizActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(100, 500, 100, 152);
+                imView.setLayoutParams(params);
+                mFrameLayoutAnswersArea.addView(textView);
+                mFrameLayoutAnswersArea.addView(imView);
+
+            }
         }
 }
 
