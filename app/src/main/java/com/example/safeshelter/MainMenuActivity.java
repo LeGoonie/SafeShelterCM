@@ -33,7 +33,7 @@ public class MainMenuActivity extends AppCompatActivity {
         settings_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, InsertParentalCode.class);
                 startActivity(intent);
             }
         });
