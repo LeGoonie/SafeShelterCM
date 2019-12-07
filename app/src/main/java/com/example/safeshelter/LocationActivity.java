@@ -7,14 +7,21 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,9 +33,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.CircleOptions;
 
 
-public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback {
-    GoogleMap map;
+public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback ,SensorEventListener {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private static final String TAG = "LocationActivity";
+    GoogleMap map;
+
+    private SensorManager sensorManager;
+    Sensor accelerometer;
+    KeyguardManager myKM = (KeyguardManager) getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +63,44 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        boolean value = false;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            value = Settings.System.canWrite(getApplicationContext());
+
+            if(value){
+                initiateSensor();
+            } else {
+                Log.d(TAG, "NAO ENTROU");
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + getApplicationContext().getPackageName()));
+                startActivity(intent);
+                value = true;
+            }
+        } else {
+            Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    private void initiateSensor(){
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(LocationActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Log.d(TAG, "onSensorChanged: X: " + event.values[0] + " Y:" + event.values[1] + " Z:" + event.values[2]);
+        if(event.values[0] >  30 || event.values[0] < (-30) || event.values[1] > 30 || event.values[1] < (-30)
+        || event.values[2] > 30 || event.values[2] < (-30)){
+            Settings.System.putInt(getContentResolver(),Settings.System.SCREEN_OFF_TIMEOUT, 1000);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i){
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap){
@@ -108,7 +156,6 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 }
                 return;
             }
-
         }
     }
 
