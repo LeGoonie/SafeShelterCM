@@ -92,8 +92,29 @@
     <string name="edit_text_hint">Insere a resposta aqui ..</string>
 
     <!-- Choose Parental Code -->
-    <string name="choose_code">Choose Parental Code</string>
+    <string name="choose_code">Defina o Código Parental</string>
     <string name="first_code">Insira o código parental</string>
     <string name="second_code">Insira novamente o código parental</string>
     <string name="submit_code">Definir código</string>
+
+    <!-- Change Parental Code -->
+    <string name="change_code">Altere o Código Parental</string>
+    <string name="change_first_code">Insira o código parental atual</string>
+    <string name="change_second_code">Insira o novo código parental</string>
+    <string name="submit_change_code">Mudar código</string>
+
+    <!-- Insert Parental Code -->
+    <string name="insert_code">Insira o Código Parental</string>
+    <string name="number_zero">0</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_three">3</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="number_six">6</string>
+    <string name="number_seven">7</string>
+    <string name="number_eight">8</string>
+    <string name="number_nine">9</string>
+    <string name="btn_clear">Limpar</string>
+    <string name="btn_backspace">Apagar</string>
 </resources>
