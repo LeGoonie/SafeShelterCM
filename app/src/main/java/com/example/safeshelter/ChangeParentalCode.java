@@ -41,6 +41,8 @@ public class ChangeParentalCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_parental_code);
 
+        setTitle("SafeShelter");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

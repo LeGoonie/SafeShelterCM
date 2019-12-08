@@ -1,8 +1,16 @@
 package com.example.safeshelter;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +30,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class InsertParentalCode extends AppCompatActivity {
     private Button insert_button;
     private EditText password_field;
     private TextView back, clear;
     private TextView one, two, three, four, five, six, seven, eight, nine, zero;
+
+    boolean currentFocus;
+    boolean isPaused;
+    Handler collapseNotificationHandler;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
@@ -166,5 +181,90 @@ public class InsertParentalCode extends AppCompatActivity {
                 password_field.append("0");
             }
         });
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+        currentFocus = hasFocus;
+
+        if (!hasFocus) {
+            collapseNow();
+        }
+    }
+
+    public void collapseNow() {
+        if (collapseNotificationHandler == null) {
+            collapseNotificationHandler = new Handler();
+        }
+
+        if (!currentFocus && !isPaused) {
+            collapseNotificationHandler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Object statusBarService = getSystemService("statusbar");
+                    Class<?> statusBarManager = null;
+
+                    try {
+                        statusBarManager = Class.forName("android.app.StatusBarManager");
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    Method collapseStatusBar = null;
+
+                    try {
+                        if (Build.VERSION.SDK_INT > 16) {
+                            collapseStatusBar = statusBarManager .getMethod("collapsePanels");
+                        } else {
+                            collapseStatusBar = statusBarManager .getMethod("collapse");
+                        }
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+
+                    collapseStatusBar.setAccessible(true);
+
+                    try {
+                        collapseStatusBar.invoke(statusBarService);
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (!currentFocus && !isPaused) {
+                        collapseNotificationHandler.postDelayed(this, 100L);
+                    }
+
+                }
+            }, 1L);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isPaused = true;
+
+        ActivityManager activityManager = (ActivityManager) getApplicationContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        activityManager.moveTaskToFront(getTaskId(), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isPaused = false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do nothing or catch the keys you want to block
+        return false;
     }
 }
