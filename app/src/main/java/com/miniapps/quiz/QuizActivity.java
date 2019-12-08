@@ -1,12 +1,18 @@
 package com.miniapps.quiz;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import android.os.Bundle;
@@ -29,7 +35,10 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -40,6 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         FrameLayout mFrameLayoutAnswersArea;
         Button mButtonSubmit;
         EditText mEditText;
+        ScrollView scroll;
         RadioGroup mRadioGroup;
         RadioButton mRadioButton1;
         RadioButton mRadioButton2;
@@ -58,6 +68,13 @@ public class QuizActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_quiz);
+            scroll = (ScrollView) findViewById(R.id.scrollView);
+            scroll.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    scroll.fullScroll(ScrollView.FOCUS_UP);
+                }
+            }, 600);
 
             // Find UI
             mTextViewQuestionNumber = (TextView) findViewById(R.id.text_view_question_number);
@@ -150,7 +167,7 @@ public class QuizActivity extends AppCompatActivity {
                     if (userAnswer.equals("")) {
                         Toast.makeText(this, "Introduz uma resposta", Toast.LENGTH_SHORT).show();
                         return;
-                    } else if (userAnswer.equals(mQuestion.getCorrectAnswers()[0])) {
+                    } else if (userAnswer.equals(mQuestion.getCorrectAnswers()[0].toLowerCase())) {
                         //Correct answer increment user score
                         Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show();
                         mUserScore++;
@@ -161,12 +178,13 @@ public class QuizActivity extends AppCompatActivity {
                     RadioButton radioButtonUserAnswer;
                     if (mRadioGroup.getCheckedRadioButtonId() != -1) {
                         radioButtonUserAnswer = (RadioButton) findViewById(mRadioGroup.getCheckedRadioButtonId());
-                        if (radioButtonUserAnswer.getText().toString().toLowerCase().equals(mQuestion.getCorrectAnswers()[0])) {
+                        Log.d("Check", ""+radioButtonUserAnswer.getText().toString());
+                        if (radioButtonUserAnswer.getText().toString().toLowerCase().equals(mQuestion.getCorrectAnswers()[0].toLowerCase())) {
                             mUserScore++;
                             tempVar = "certa";
                         }
                     } else {
-                        Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Seleciona uma resposta", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     break;
@@ -178,16 +196,19 @@ public class QuizActivity extends AppCompatActivity {
                     MyCheckBoxes.add(mCheckBox3);
                     MyCheckBoxes.add(mCheckBox4);
                     MyCheckBoxes.size();
+                    List<String> userAnswers = new ArrayList<>();
                     for (CheckBox box : MyCheckBoxes) {
                         if (box.isChecked()) {
-                            if (Arrays.asList(mQuestion.getCorrectAnswers()).contains(box.getText().toString().toLowerCase())) {
-                                correctAnswer = true;
-                            } else {
-                                correctAnswer = false;
-                                break;
-                            }
+                            userAnswers.add(box.getText().toString().toLowerCase());
                         }
                     }
+                    if(userAnswers.contains(mQuestion.getCorrectAnswers()[0].toLowerCase()) && userAnswers.contains(mQuestion.getCorrectAnswers()[1].toLowerCase())) {
+                        correctAnswer = true;
+                    }
+                    else {
+                        correctAnswer = false;
+                    }
+
                     if (correctAnswer) {
                         mUserScore++;
                         tempVar = "certa";
@@ -195,7 +216,7 @@ public class QuizActivity extends AppCompatActivity {
                     break;
                 default:
                     //Correct answer increment user score
-                    Toast.makeText(this, "Error Undefined Question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Erro pergunta não definida", Toast.LENGTH_SHORT).show();
                     break;
             }
             Toast.makeText(this, "A resposta está " + tempVar, Toast.LENGTH_SHORT).show();
@@ -209,8 +230,11 @@ public class QuizActivity extends AppCompatActivity {
                 textView = new TextView(this);
                 String scoreString = "Score: " + mUserScore;
                 textView.setText(scoreString);
+                textView.setTextSize(48);
+                textView.setTextColor(Color.parseColor("#ED2939"));
+                textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
                 FrameLayout.LayoutParams paramsText = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                paramsText.setMargins(100, 0, 100, 200);
+                paramsText.setMargins(310, 400, 0, 200);
                 textView.setLayoutParams(paramsText);
                 imView = new ImageView(this);
                 imView.setImageResource(R.drawable.sair_kids);
@@ -222,7 +246,7 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 });
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                params.setMargins(100, 500, 100, 152);
+                params.setMargins(100, 900, 100, 152);
                 imView.setLayoutParams(params);
                 mFrameLayoutAnswersArea.addView(textView);
                 mFrameLayoutAnswersArea.addView(imView);
