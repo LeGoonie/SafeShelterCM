@@ -3,6 +3,7 @@ package com.example.safeshelter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -87,7 +88,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    Object statusBarService = getSystemService("statusbar");
+                    @SuppressLint("WrongConstant") Object statusBarService = getSystemService("statusbar");
                     Class<?> statusBarManager = null;
 
                     try {
@@ -132,12 +133,12 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        isPaused = true;
+        /*isPaused = true;
 
         ActivityManager activityManager = (ActivityManager) getApplicationContext()
                 .getSystemService(Context.ACTIVITY_SERVICE);
 
-        activityManager.moveTaskToFront(getTaskId(), 0);
+        activityManager.moveTaskToFront(getTaskId(), 0);*/
     }
 
     @Override
