@@ -15,6 +15,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -133,4 +134,10 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             map.addCircle(circleOptions);
         }
     };
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do nothing or catch the keys you want to block
+        return false;
+    }
 }

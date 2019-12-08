@@ -1,9 +1,11 @@
 package com.example.safeshelter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,6 +17,11 @@ public class ChangeParentalCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_parental_code);
 
+        setTitle("SafeShelter");
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         change_code = findViewById(R.id.button_login);
         change_code.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,5 +30,11 @@ public class ChangeParentalCode extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do nothing or catch the keys you want to block
+        return false;
     }
 }

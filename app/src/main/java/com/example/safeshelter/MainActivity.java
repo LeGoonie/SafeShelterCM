@@ -3,6 +3,7 @@ package com.example.safeshelter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -31,5 +32,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, SPLASH_TIMEOUT);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do nothing or catch the keys you want to block
+        return false;
     }
 }
