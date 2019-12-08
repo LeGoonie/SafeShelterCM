@@ -4,11 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -33,6 +38,8 @@ import com.example.safeshelter.R;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -63,6 +70,10 @@ public class QuizActivity extends AppCompatActivity {
         ImageView imView;
         int questionNumber = 0;
         int mUserScore = 0;
+
+        boolean currentFocus;
+        boolean isPaused;
+        Handler collapseNotificationHandler;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -253,5 +264,90 @@ public class QuizActivity extends AppCompatActivity {
 
             }
         }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+        currentFocus = hasFocus;
+
+        if (!hasFocus) {
+            collapseNow();
+        }
+    }
+
+    public void collapseNow() {
+        if (collapseNotificationHandler == null) {
+            collapseNotificationHandler = new Handler();
+        }
+
+        if (!currentFocus && !isPaused) {
+            collapseNotificationHandler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Object statusBarService = getSystemService("statusbar");
+                    Class<?> statusBarManager = null;
+
+                    try {
+                        statusBarManager = Class.forName("android.app.StatusBarManager");
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    Method collapseStatusBar = null;
+
+                    try {
+                        if (Build.VERSION.SDK_INT > 16) {
+                            collapseStatusBar = statusBarManager .getMethod("collapsePanels");
+                        } else {
+                            collapseStatusBar = statusBarManager .getMethod("collapse");
+                        }
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+
+                    collapseStatusBar.setAccessible(true);
+
+                    try {
+                        collapseStatusBar.invoke(statusBarService);
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (!currentFocus && !isPaused) {
+                        collapseNotificationHandler.postDelayed(this, 100L);
+                    }
+
+                }
+            }, 1L);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isPaused = true;
+
+        ActivityManager activityManager = (ActivityManager) getApplicationContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        activityManager.moveTaskToFront(getTaskId(), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isPaused = false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do nothing or catch the keys you want to block
+        return false;
+    }
 }
 

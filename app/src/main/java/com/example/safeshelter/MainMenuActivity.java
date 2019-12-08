@@ -132,12 +132,12 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        isPaused = true;
+        /*isPaused = true;
 
         ActivityManager activityManager = (ActivityManager) getApplicationContext()
                 .getSystemService(Context.ACTIVITY_SERVICE);
 
-        activityManager.moveTaskToFront(getTaskId(), 0);
+        activityManager.moveTaskToFront(getTaskId(), 0);*/
     }
 
     @Override
