@@ -47,15 +47,15 @@
 
     <ImageView
         android:id="@+id/Login_Icon"
-        android:layout_width="121dp"
-        android:layout_height="88dp"
+        android:layout_width="92dp"
+        android:layout_height="98dp"
         android:layout_marginTop="160dp"
         android:contentDescription="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_foreground"
+        app:srcCompat="@drawable/settings_icon"
         tools:ignore="VectorDrawableCompat" />
 
     <Button
