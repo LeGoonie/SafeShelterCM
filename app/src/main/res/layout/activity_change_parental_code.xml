@@ -24,8 +24,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="192dp"
         android:text="@string/change_code"
         android:textSize="20dp"
@@ -37,13 +37,30 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:hint="@string/change_first_code"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText_secondCode"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/change_second_code"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_firstCode" />
 
     <ImageView
         android:id="@+id/Login_Icon"
@@ -52,7 +69,7 @@
         android:layout_marginTop="160dp"
         android:contentDescription="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_foreground"
@@ -71,16 +88,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_secondCode" />
 
-    <EditText
-        android:id="@+id/editText_secondCode"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/change_second_code"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_firstCode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

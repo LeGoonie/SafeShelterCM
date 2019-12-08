@@ -265,12 +265,14 @@ public class HomeActivity extends AppCompatActivity {
                                 DatabaseReference reference = database.getReference("Users");
                                 //put data with hashmap in database
                                 reference.child(uid).setValue(hashMap);
+                                startActivity(new Intent(HomeActivity.this, ChooseParentalCode.class));
+                            } else{
+                                startActivity(new Intent(HomeActivity.this, MainMenuActivity.class));
                             }
 
                             //show user email in toast
                             Toast.makeText(HomeActivity.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             //go to profile activity after logged in
-                            startActivity(new Intent(HomeActivity.this, MainMenuActivity.class));
                             finish();
                             //updateUI(user);
                         } else {
