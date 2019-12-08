@@ -7,7 +7,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,7 +39,6 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
     private SensorManager sensorManager;
     Sensor accelerometer;
-    KeyguardManager myKM = (KeyguardManager) getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +46,11 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_location);
         setTitle("SafeShelter");
 
+        /*Criação Toolbar*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,33 +59,37 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             }
         });
 
+        /*Criação Mapa*/
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        /*Pedido de Permissões*/
         boolean value = false;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             value = Settings.System.canWrite(getApplicationContext());
 
-            if(value){
-                initiateSensor();
-            } else {
+            if(!value){
                 Log.d(TAG, "NAO ENTROU");
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
                 intent.setData(Uri.parse("package:" + getApplicationContext().getPackageName()));
                 startActivity(intent);
                 value = true;
+            } else {
+                initiateSensor();
             }
         } else {
             Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
         }
     }
 
+    /*Criação de Permissões*/
     private void initiateSensor(){
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(LocationActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+    /*Detetor Movimentos*/
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d(TAG, "onSensorChanged: X: " + event.values[0] + " Y:" + event.values[1] + " Z:" + event.values[2]);
@@ -98,9 +100,8 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i){
+    public void onAccuracyChanged(Sensor sensor, int i){}
 
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap){

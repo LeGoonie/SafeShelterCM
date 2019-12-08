@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/Settings_Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="239dp"
+        android:layout_height="141dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="36dp"
         android:contentDescription="@null"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_foreground"
+        app:srcCompat="@drawable/settings_icon"
         tools:ignore="UnknownId,VectorDrawableCompat" />
 
     <androidx.constraintlayout.widget.Guideline
