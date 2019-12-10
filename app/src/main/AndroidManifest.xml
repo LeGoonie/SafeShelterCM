@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
@@ -48,6 +49,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key"/>
 
+        <activity
+            android:name="com.miniapps.maze.MazeActivity"
+            android:excludeFromRecents="true"/>
+
+        <activity
+            android:name="com.miniapps.maze.SelectMazeActivity"
+            android:launchMode="singleTask"/>
 
     </application>
 

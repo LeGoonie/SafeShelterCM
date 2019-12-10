@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -187,7 +186,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 }
                             });
                 } else{
-                    Toast.makeText(ProfileActivity.this, "Please enter "+key, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Please enter " + key, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -1,11 +1,6 @@
 package com.example.safeshelter;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,14 +9,18 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.miniapps.maze.MazeActivity;
 import com.miniapps.quiz.MainQuizActivity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 
 public class MainMenuActivity extends AppCompatActivity {
-    public ImageView settings_image, youtube_kids_image, quiz_app_image;
+    public ImageView settings_image, youtube_kids_image, quiz_app_image, maze_app_image;
 
     boolean currentFocus;
     boolean isPaused;
@@ -63,6 +62,14 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenuActivity.this, MainQuizActivity.class);
+                startActivity(intent);
+            }
+        });
+        maze_app_image = (ImageView) findViewById(R.id.mazeApp);
+        maze_app_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenuActivity.this, MazeActivity.class);
                 startActivity(intent);
             }
         });
