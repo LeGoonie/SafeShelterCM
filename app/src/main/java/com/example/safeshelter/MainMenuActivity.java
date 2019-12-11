@@ -138,23 +138,6 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        /*isPaused = true;
-
-        ActivityManager activityManager = (ActivityManager) getApplicationContext()
-                .getSystemService(Context.ACTIVITY_SERVICE);
-
-        activityManager.moveTaskToFront(getTaskId(), 0);*/
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        isPaused = false;
-    }
-
-    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Do nothing or catch the keys you want to block
         return false;
