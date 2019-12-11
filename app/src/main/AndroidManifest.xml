@@ -17,23 +17,47 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"><activity android:name=".InsertParentalCode"
-        android:parentActivityName=".MainMenuActivity"/>
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".InsertParentalCode"
+        android:parentActivityName=".MainMenuActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ChangeParentalCode"
-            android:parentActivityName=".SettingsActivity"/>
-        <activity android:name=".ChooseParentalCode" /><activity android:name="com.miniapps.quiz.MainQuizActivity" />
-        <activity android:name="com.miniapps.quiz.QuizActivity" /> <!-- Profile Activity -->
-        <activity android:name=".ProfileActivity" /> <!-- Settings Activity -->
+            android:parentActivityName=".SettingsActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ChooseParentalCode"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.miniapps.quiz.MainQuizActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.miniapps.quiz.QuizActivity"
+            android:screenOrientation="portrait"/> <!-- Profile Activity -->
+
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"/> <!-- Settings Activity -->
+
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainMenuActivity"
-            android:theme="@style/SettingsTheme" /> <!-- Main Menu Activity -->
-        <activity android:name=".MainMenuActivity" /> <!-- Register Activity -->
+            android:theme="@style/SettingsTheme"
+            android:screenOrientation="portrait"/> <!-- Main Menu Activity -->
+
+        <activity android:name=".MainMenuActivity"
+            android:screenOrientation="portrait"/> <!-- Register Activity -->
+
         <activity
             android:name=".RegisterActivity"
-            android:parentActivityName=".HomeActivity" /> <!-- Login Activity -->
-        <activity android:name=".HomeActivity" /> <!-- Splash Screen -->
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/> <!-- Login Activity -->
+
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/> <!-- Splash Screen -->
+
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +65,8 @@
         </intent-filter>
         </activity>
 
-        <activity android:name=".LocationActivity"/>
+        <activity android:name=".LocationActivity"
+            android:screenOrientation="portrait"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -51,11 +76,13 @@
 
         <activity
             android:name="com.miniapps.maze.MazeActivity"
-            android:excludeFromRecents="true"/>
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.miniapps.maze.SelectMazeActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
 
     </application>
 
