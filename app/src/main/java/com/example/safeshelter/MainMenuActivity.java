@@ -66,7 +66,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
                     startActivity(launchIntent);
                 } else {
-                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainMenuActivity.this, "Acesso não permitido", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -79,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainMenuActivity.this, MainQuizActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainMenuActivity.this, "Acesso não permitido", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -92,7 +92,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainMenuActivity.this, MazeActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainMenuActivity.this, "Acesso não permitido", Toast.LENGTH_SHORT).show();
                 }
             }
         });
