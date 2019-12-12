@@ -1,6 +1,7 @@
 package com.example.safeshelter;
 
 import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -96,7 +97,10 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
