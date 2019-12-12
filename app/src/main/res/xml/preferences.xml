@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- FILTRO APPS -->
-    <MultiSelectListPreference
+    <Preference
         android:key="AppFilter"
         android:title="@string/AppFilter"
-        android:entries="@array/AppFilter_entries_Strings"
-        android:entryValues="@array/AppFilter_Type_Entries"
-        app:iconSpaceReserved="false"
-        />
+        android:summary="@string/filter_title"
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="filter"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.AppFilterActivity" />
+    </Preference>
 
     <!-- CODIGO PARENTAL -->
     <Preference

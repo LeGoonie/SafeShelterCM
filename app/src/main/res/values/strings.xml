@@ -128,4 +128,11 @@
 
     <string name="locked_out">Tempo de utilização terminou</string>
     <string name="return_settings">Voltar para Settings</string>
+
+    <string name="youtube_kids">Youtube Kids</string>
+    <string name="quiz">Quiz</string>
+    <string name="maze">Maze</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="filter">Filtrar</string>
+    <string name="filter_title">Escolha as apps que deseja no menu principal</string>
 </resources>

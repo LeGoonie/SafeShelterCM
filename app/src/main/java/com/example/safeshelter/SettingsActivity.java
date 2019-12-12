@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.widget.Button;
 
 public class SettingsActivity extends AppCompatActivity {
-    public Preference profile_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

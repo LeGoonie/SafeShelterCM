@@ -2,6 +2,7 @@ package com.example.safeshelter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.miniapps.maze.MazeActivity;
 import com.miniapps.quiz.MainQuizActivity;
@@ -23,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainMenuActivity extends AppCompatActivity {
     public ImageView settings_image, youtube_kids_image, quiz_app_image, maze_app_image;
+    private boolean isYoutubeKidsSelected, isQuizSelected, isMazeSelected, isTicTacToeSelected;
 
     boolean currentFocus;
     boolean isPaused;
@@ -39,6 +42,12 @@ public class MainMenuActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        isYoutubeKidsSelected = prefs.getBoolean("YoutubeKids", false);
+        isQuizSelected = prefs.getBoolean("Quiz", false);
+        isMazeSelected = prefs.getBoolean("Maze", false);
+        isTicTacToeSelected = prefs.getBoolean("TicTacToe", false);
+
         settings_image = (ImageView) findViewById(R.id.Settings_Icon);
         settings_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +62,11 @@ public class MainMenuActivity extends AppCompatActivity {
         youtube_kids_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view.getId() == R.id.imageYoutubeKids) {
+                if (view.getId() == R.id.imageYoutubeKids && isYoutubeKidsSelected) {
                     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
                     startActivity(launchIntent);
+                } else {
+                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -64,8 +75,12 @@ public class MainMenuActivity extends AppCompatActivity {
         quiz_app_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, MainQuizActivity.class);
-                startActivity(intent);
+                if(isQuizSelected){
+                    Intent intent = new Intent(MainMenuActivity.this, MainQuizActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -73,8 +88,12 @@ public class MainMenuActivity extends AppCompatActivity {
         maze_app_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, MazeActivity.class);
-                startActivity(intent);
+                if(isMazeSelected){
+                    Intent intent = new Intent(MainMenuActivity.this, MazeActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainMenuActivity.this, "Icon desativado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

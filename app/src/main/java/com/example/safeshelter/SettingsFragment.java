@@ -13,7 +13,6 @@ import androidx.preference.PreferenceFragmentCompat;
  * A simple {@link Fragment} subclass.
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
-
     private FirebaseAuth mAuth;
 
     @Override
