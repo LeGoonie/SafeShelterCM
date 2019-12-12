@@ -29,7 +29,13 @@
         android:key="Time_Limit"
         android:title="@string/Time_Limit"
         android:summary="@string/Time_Limit_Summary"
-        app:iconSpaceReserved="false"/>
+        app:iconSpaceReserved="false">
+
+        <intent
+            android:action="timeLimit"
+            android:targetPackage="com.example.safeshelter"
+            android:targetClass="com.example.safeshelter.OutOfTimeActivity" />
+    </Preference>
 
     <!-- LOCALIZAÇÃO -->
     <Preference

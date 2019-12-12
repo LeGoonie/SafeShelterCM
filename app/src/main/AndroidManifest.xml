@@ -2,14 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.safeshelter">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -18,72 +18,73 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".InsertParentalCode"
-        android:parentActivityName=".MainMenuActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ChangeParentalCode"
+        <activity android:name=".LockedOutActivity"></activity>
+        <activity
+            android:name=".OutOfTimeActivity"
+            android:parentActivityName=".SettingsActivity" />
+        <activity
+            android:name=".InsertParentalCode"
+            android:parentActivityName=".MainMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangeParentalCode"
             android:parentActivityName=".SettingsActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ChooseParentalCode"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.miniapps.quiz.MainQuizActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.miniapps.quiz.QuizActivity"
-            android:screenOrientation="portrait"/> <!-- Profile Activity -->
-
-        <activity android:name=".ProfileActivity"
-            android:screenOrientation="portrait"/> <!-- Settings Activity -->
-
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChooseParentalCode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.miniapps.quiz.MainQuizActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.miniapps.quiz.QuizActivity"
+            android:screenOrientation="portrait" /> <!-- Profile Activity -->
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" /> <!-- Settings Activity -->
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainMenuActivity"
-            android:theme="@style/SettingsTheme"
-            android:screenOrientation="portrait"/> <!-- Main Menu Activity -->
-
-        <activity android:name=".MainMenuActivity"
-            android:screenOrientation="portrait"/> <!-- Register Activity -->
-
+            android:screenOrientation="portrait"
+            android:theme="@style/SettingsTheme" /> <!-- Main Menu Activity -->
+        <activity
+            android:name=".MainMenuActivity"
+            android:screenOrientation="portrait" /> <!-- Register Activity -->
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".HomeActivity"
-            android:screenOrientation="portrait"/> <!-- Login Activity -->
-
-        <activity android:name=".HomeActivity"
-            android:screenOrientation="portrait"/> <!-- Splash Screen -->
-
-        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" /> <!-- Login Activity -->
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" /> <!-- Splash Screen -->
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".LocationActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".LocationActivity"
-            android:screenOrientation="portrait"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/map_key"/>
+            android:value="@string/map_key" />
 
         <activity
             android:name="com.miniapps.maze.MazeActivity"
             android:excludeFromRecents="true"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.miniapps.maze.SelectMazeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

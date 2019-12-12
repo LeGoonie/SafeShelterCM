@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.miniapps.maze.MazeActivity;
@@ -29,6 +31,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        removeTitleBar();
         setContentView(R.layout.activity_main_menu);
 
         setTitle("SafeShelter");
@@ -65,6 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         maze_app_image = (ImageView) findViewById(R.id.mazeApp);
         maze_app_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +139,15 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             }, 1L);
         }
+    }
+
+    protected void removeTitleBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+        //Remove notification bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
