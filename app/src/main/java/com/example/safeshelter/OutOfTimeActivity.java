@@ -86,7 +86,7 @@ public class OutOfTimeActivity extends AppCompatActivity {
                             finish();
                         }
                     }, secondsDelayed * 1000);
-                    mButtonStartPause.setVisibility(View.INVISIBLE);
+                    mButtonStartPause.setEnabled(false);
 
                 }
             }
@@ -153,11 +153,9 @@ public class OutOfTimeActivity extends AppCompatActivity {
         if (mTimerRunning) {
             mEditTextInput.setVisibility(View.INVISIBLE);
             mButtonSet.setVisibility(View.INVISIBLE);
-            mButtonStartPause.setText("Pause");
         } else {
             mEditTextInput.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
-            mButtonStartPause.setText("Start");
 
             /*if (mTimeLeftInMillis < 1000) {
                 mButtonStartPause.setVisibility(View.INVISIBLE);
@@ -208,7 +206,6 @@ public class OutOfTimeActivity extends AppCompatActivity {
         updateWatchInterface();
 
         if (mTimerRunning) {
-            mButtonStartPause.setVisibility(View.INVISIBLE);
             mEndTime = prefs.getLong("endTime", 0);
             mTimeLeftInMillis = mEndTime - System.currentTimeMillis();
 
@@ -220,8 +217,6 @@ public class OutOfTimeActivity extends AppCompatActivity {
             } else {
                 startTimer();
             }
-        } else {
-            mButtonStartPause.setVisibility(View.VISIBLE);
         }
     }
 }
