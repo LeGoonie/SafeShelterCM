@@ -4,14 +4,14 @@
     <string name="name_text">Username</string>
     <string name="password_text">Password</string>
     <string name="login_button">Login</string>
-    <string name="register_text">Register</string>
+    <string name="register_text">Registar</string>
     <string name="email_text">Email</string>
-    <string name="cnf_password_text">Confirm Password</string>
-    <string name="register_button">Register</string>
+    <string name="cnf_password_text">Confirmar Password</string>
+    <string name="register_button">Registar</string>
     <string name="login_text">Login</string>
 
     <!--  BOTÃO SOS -->
-    <string name="SOS_pref">Botao SOS</string>
+    <string name="SOS_pref">Botão SOS</string>
     <string name="SOS_pref_summary">Comunições em caso de emergência</string>
 
     <!-- FILTRO APPS -->
@@ -50,7 +50,7 @@
 
     <!-- TIME LIMIT -->
     <string name="Time_Limit">Tempo de Utilização</string>
-    <string name="Time_Limit_Summary">Definir tempo de utilizacao</string>
+    <string name="Time_Limit_Summary">Definir tempo de utilização</string>
 
     <!-- LOCATION -->
     <string name="Location">Localização</string>
@@ -62,25 +62,14 @@
     <string name="Profile_Summary">O seu perfil</string>
 
     <!-- LOG OUT -->
-    <string name="Log_Out">Log out</string>
+    <string name="Log_Out">Terminar sessão</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="child_name_text">Child\'s Name</string>
+    <string name="child_name_text">Nome do Filho</string>
 
     <!-- Quiz app -->
     <string name="question_number">1/9</string>

@@ -11,6 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="100dp"
         android:padding="10dip"
         android:scaleType="centerInside"
         />
@@ -30,7 +31,7 @@
             android:layout_marginRight="1dip"
             android:gravity="left"
             android:singleLine="true"
-            android:text="Maze: "
+            android:text="Puzzle: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 
@@ -67,7 +68,7 @@
             android:layout_marginLeft="1dip"
             android:layout_marginRight="1dip"
             android:singleLine="true"
-            android:text="Goals: "
+            android:text="Pontos: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 
@@ -92,7 +93,7 @@
             android:layout_marginLeft="1dip"
             android:layout_marginRight="1dip"
             android:singleLine="true"
-            android:text="Steps: "
+            android:text="Passos: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 

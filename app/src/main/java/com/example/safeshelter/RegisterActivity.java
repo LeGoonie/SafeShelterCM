@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("A registar utilizador...");
 
         //register btn click
         mButtonRegister.setOnClickListener(new View.OnClickListener() {
@@ -80,23 +80,23 @@ public class RegisterActivity extends AppCompatActivity {
                 //validate
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     //set error to email editText
-                    mTextEmail.setError("Invalid Email");
+                    mTextEmail.setError("Email invalido");
                     mTextEmail.setFocusable(true);
                 } else if (name.length() == 0) {
                     //set error to name editText
-                    mTextName.setError("Parent Name Must Be Entered");
+                    mTextName.setError("O nome do pai deve ser inserido");
                     mTextName.setFocusable(true);
                 } else if (childName.length() == 0) {
                     //set error to child's name editText
-                    mTextChildName.setError("Child's Name Must Be Entered");
+                    mTextChildName.setError("O nome do filho deve ser inserido");
                     mTextChildName.setFocusable(true);
                 } else if (password.length() < 6) {
                     //set error to password editText
-                    mTextPassword.setError("Password length at least 6 characters");
+                    mTextPassword.setError("Password deve ter pelo menos 6 caracteres");
                     mTextPassword.setFocusable(true);
                 } else if (!(password.equals(cnfPassword))) {
                     //set error to confirmation password editText
-                    mTextCnfPassword.setError("Confirmation password does not match with the password");
+                    mTextCnfPassword.setError("Password de confirmação não coinside com a password");
                 } else {
                     registerUser(email, password);
                 }
@@ -136,13 +136,13 @@ public class RegisterActivity extends AppCompatActivity {
                             //put data with hashmap in database
                             reference.child(uid).setValue(hashMap);
 
-                            Toast.makeText(RegisterActivity.this, "Registered...\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registado...\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, ChooseParentalCode.class));
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Falha no registo.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
