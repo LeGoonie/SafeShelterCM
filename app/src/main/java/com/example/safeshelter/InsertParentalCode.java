@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ public class InsertParentalCode extends AppCompatActivity {
         setTitle("SafeShelter");
 
         super.onCreate(savedInstanceState);
+        removeTitleBar();
         setContentView(R.layout.activity_insert_parental_code);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -252,6 +255,15 @@ public class InsertParentalCode extends AppCompatActivity {
                 }
             }, 1L);
         }
+    }
+
+    protected void removeTitleBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+        //Remove notification bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override

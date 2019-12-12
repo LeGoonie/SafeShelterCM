@@ -15,6 +15,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -79,6 +81,7 @@ public class QuizActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            removeTitleBar();
             setContentView(R.layout.activity_quiz);
             scroll = (ScrollView) findViewById(R.id.scrollView);
             scroll.postDelayed(new Runnable() {
@@ -345,6 +348,15 @@ public class QuizActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         isPaused = false;
+    }
+
+    protected void removeTitleBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+        //Remove notification bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
