@@ -28,7 +28,7 @@ public class LockedOutActivity extends AppCompatActivity {
         return_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LockedOutActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(LockedOutActivity.this, InsertParentalCode.class);
                 startActivity(intent);
             }
         });
