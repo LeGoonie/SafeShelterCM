@@ -159,14 +159,14 @@ public class GameEngine {
 
                             if (mDB.unsolvedMazes().getCount() == 0) {
                                 mAllMazesSolvedDialog.setMessage(
-                                        "Mad props!\nYou have solved all the mazes!\n" +
-                                                "Now go back and try to solve them in fewer steps! :)");
+                                        "Boa!\nConseguiste completar todos os puzzles!\n" +
+                                                "Agora volta atrás e tenta completa-los em menos passos! :)");
                                 mAllMazesSolvedDialog.show();
                             } else {
                                 mMazeSolvedDialog.setMessage(
-                                        "You have solved maze "
+                                        "Completaste o puzzle "
                                                 + mMap.getName()
-                                                + " in " + mStepCount + " steps."
+                                                + " em " + mStepCount + " passos."
                                 );
                                 mMazeSolvedDialog.show();
                             }

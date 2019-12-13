@@ -7,13 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -33,10 +36,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -83,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
                 String email = mTextEmail.getText().toString().trim();
                 String password = mTextPassword.getText().toString().trim();
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    mTextEmail.setError("Invalid Email");
+                    mTextEmail.setError("Email Invalido");
                     mTextEmail.setFocusable(true);
                 } else{
                     loginUser(email, password);
@@ -124,7 +123,7 @@ public class HomeActivity extends AppCompatActivity {
     private void showRecoverPasswordDialog() {
         //AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Recover Password");
+        builder.setTitle("Recuperar password");
 
         //set layout linear layout
         LinearLayout linearLayout = new LinearLayout(this);
@@ -139,7 +138,7 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(linearLayout);
 
         //buttons recover
-        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Recuperar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //input email
@@ -148,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         //buttons cancel
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //dismiss dialog
@@ -161,7 +160,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void beginRecovery(String email) {
         //show progress dialog message
-        progressDialog.setMessage("Sending email...");
+        progressDialog.setMessage("A enviar email...");
         progressDialog.show();
 
         mAuth.sendPasswordResetEmail(email)
@@ -187,7 +186,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loginUser(String email, String password) {
         //show progress dialog message
-        progressDialog.setMessage("Logging In...");
+        progressDialog.setMessage("A iniciar sessão...");
         progressDialog.show();
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -205,7 +204,7 @@ public class HomeActivity extends AppCompatActivity {
                             //dismiss progress dialog
                             progressDialog.dismiss();
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(HomeActivity.this, "Authentication failed.",
+                            Toast.makeText(HomeActivity.this, "Falha na autenticação.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -258,8 +257,6 @@ public class HomeActivity extends AppCompatActivity {
                                 hashMap.put("uid", uid);
                                 hashMap.put("parentName", "");
                                 hashMap.put("childrenName", "");
-                                hashMap.put("permittedApps", "");
-                                hashMap.put("locationHistory", "");
                                 //firebase database instance
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 //path to store user data named "Users"
@@ -278,7 +275,7 @@ public class HomeActivity extends AppCompatActivity {
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(HomeActivity.this,"Login Failed...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this,"Falha ao iniciar sessão...", Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
 
