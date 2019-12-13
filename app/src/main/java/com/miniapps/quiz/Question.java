@@ -65,7 +65,7 @@ public class Question {
         this.string = string;
     }
 
-
+    //Lista de perguntas
     public static List<Question> getQuestions(){
         List<Question> mList = new ArrayList<>();
 

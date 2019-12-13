@@ -28,6 +28,7 @@ public class MainQuizActivity extends AppCompatActivity {
     boolean isPaused;
     Handler collapseNotificationHandler;
 
+    //Criação dos botões do menu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +116,7 @@ public class MainQuizActivity extends AppCompatActivity {
         }
     }
 
+    // Pausa da app
     @Override
     protected void onPause() {
         super.onPause();
@@ -126,12 +128,14 @@ public class MainQuizActivity extends AppCompatActivity {
         activityManager.moveTaskToFront(getTaskId(), 0);
     }
 
+    // Continuação app
     @Override
     protected void onResume() {
         super.onResume();
         isPaused = false;
     }
 
+    // Remove toolbar
     protected void removeTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
