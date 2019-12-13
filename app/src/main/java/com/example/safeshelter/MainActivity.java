@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("SafeShelter");
 
         setContentView(R.layout.activity_main);
+        //Mantém o splash screen durante 4 segundos
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){

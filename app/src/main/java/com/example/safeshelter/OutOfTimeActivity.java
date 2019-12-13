@@ -77,6 +77,7 @@ public class OutOfTimeActivity extends AppCompatActivity {
                 if (mTimerRunning) {
 
                 } else {
+                    //Começa o timer de contagem decrescente e manda uma  msg de aviso e executa um handler com o tempo desejado que no final o ira enviar para a LockedOutActivity
                     startTimer();
                     Toast.makeText(OutOfTimeActivity.this, "Tempo começou", Toast.LENGTH_SHORT).show();
                     int secondsDelayed = (int) (mTimeLeftInMillis / 1000) % 3600;

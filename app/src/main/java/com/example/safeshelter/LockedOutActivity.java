@@ -46,6 +46,7 @@ public class LockedOutActivity extends AppCompatActivity {
         });
     }
 
+    //Bloqueio da barra de notificações
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
 
@@ -108,6 +109,7 @@ public class LockedOutActivity extends AppCompatActivity {
         }
     }
 
+    //Remover title bar
     protected void removeTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -117,6 +119,7 @@ public class LockedOutActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
+    //Bloqueio do botão back
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Do nothing or catch the keys you want to block

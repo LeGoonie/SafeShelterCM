@@ -37,6 +37,7 @@ public class AppFilterActivity extends AppCompatActivity {
         filter_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Guarda as variaveis boolean de que apps querem ser filtradas para serem acedidas no MainMenuActivity
                 SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
 
@@ -73,6 +74,7 @@ public class AppFilterActivity extends AppCompatActivity {
     private void updateBoxes(){
         boolean isYoutubeKidsSelected, isQuizSelected, isMazeSelected, isTicTacToeSelected;
 
+        //Da update as boxes com as escolhas atuais
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         isYoutubeKidsSelected = prefs.getBoolean("YoutubeKids", false);
         isQuizSelected = prefs.getBoolean("Quiz", false);

@@ -18,12 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".AppFilterActivity"
-            android:parentActivityName=".SettingsActivity"/>
-
+        <activity android:name="com.miniapps.obstacleGame.ObstacleGameActivity"></activity>
+        <activity
+            android:name=".AppFilterActivity"
+            android:parentActivityName=".SettingsActivity" />
         <activity android:name=".LockedOutActivity" />
-
         <activity
             android:name=".OutOfTimeActivity"
             android:parentActivityName=".SettingsActivity" />

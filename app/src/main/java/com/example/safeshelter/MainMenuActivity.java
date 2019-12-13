@@ -43,6 +43,7 @@ public class MainMenuActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Obtem as variaveis boolean para saber que apps estao bloqueadas a partir da AppFilterActivity
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         isYoutubeKidsSelected = prefs.getBoolean("YoutubeKids", false);
         isQuizSelected = prefs.getBoolean("Quiz", false);
@@ -100,7 +101,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     }
 
-
+    /*Bloquear a barra de notificações*/
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -164,6 +165,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
     }
 
+    //Remover Title Bar
     protected void removeTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -173,6 +175,7 @@ public class MainMenuActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
+    //Bloquear Back Button
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Do nothing or catch the keys you want to block
