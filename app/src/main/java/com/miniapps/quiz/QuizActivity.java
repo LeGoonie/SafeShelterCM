@@ -91,19 +91,19 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }, 600);
 
-            // Find UI
+            // Encontra UI
             mTextViewQuestionNumber = (TextView) findViewById(R.id.text_view_question_number);
             mTextViewQuestion = (TextView) findViewById(R.id.text_view_question);
             mImageViewQuestion = (ImageView) findViewById(R.id.image_view_question_image);
             mFrameLayoutAnswersArea = (FrameLayout) findViewById(R.id.frame_answer_area);
             mButtonSubmit = (Button) findViewById(R.id.btn_submit);
 
-            //get questions
+            //Get perguntas
             mQuestions = Question.getQuestions();
 
             Collections.shuffle(mQuestions);
 
-            // update ui with first question
+            // Atualiza UI com a 1º pergunta
             if (questionNumber < mQuestions.size()) {
                 updateUiWithQuestion(mQuestions.get(questionNumber));
             }
@@ -112,9 +112,9 @@ public class QuizActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (questionNumber < mQuestions.size()) {
-                        // grade current question
+                        // Avalia a pergunta
                         gradeQuestion(mQuestions.get(questionNumber));
-                        // update ui with next question
+                        // Atualiza UI com a próxima pergunta
                         if(questionNumber < mQuestions.size())
                             updateUiWithQuestion(mQuestions.get(questionNumber));
                     } else {
@@ -126,7 +126,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
         public void updateUiWithQuestion(Question mQuestion) {
-            // update UI with question name and image
+            // Atualiza pergunta no UI com imagem texto
             mTextViewQuestionNumber.setText((questionNumber + 1) + "/9");
             mTextViewQuestion.setText(mQuestion.getString());
             mImageViewQuestion.setImageResource(mQuestion.getImage());
@@ -135,7 +135,7 @@ public class QuizActivity extends AppCompatActivity {
             LayoutInflater inflater = LayoutInflater.from(this);
             mFrameLayoutAnswersArea.removeAllViews();
 
-            // Switch on question type to display the correct answers area
+            // Troca dependendo do tipo da pergunta a àrea da resposta
             switch (mQuestion.getType()) {
                 case TEXT:
                     View inflatedLayoutText = inflater.inflate(R.layout.answer_area_text, null, false);
@@ -175,7 +175,7 @@ public class QuizActivity extends AppCompatActivity {
         public void gradeQuestion(Question mQuestion) {
             String tempVar = "errada";
 
-            // Switch on question type to display the correct answers area
+            // Troca dependendo do tipo da pergunta a àrea da resposta
             switch (mQuestion.getType()) {
                 case TEXT:
                     String userAnswer = mEditText.getText().toString().toLowerCase();
@@ -232,13 +232,13 @@ public class QuizActivity extends AppCompatActivity {
                     }
                     break;
                 default:
-                    //Correct answer increment user score
                     Toast.makeText(this, "Erro pergunta não definida", Toast.LENGTH_SHORT).show();
                     break;
             }
             Toast.makeText(this, "A resposta está " + tempVar, Toast.LENGTH_SHORT).show();
             questionNumber++;
 
+            //Ecrá final quando as perguntas acabam
             if(questionNumber == mQuestions.size()){
                 mFrameLayoutAnswersArea.removeAllViews();
                 mImageViewQuestion.setVisibility(View.GONE);
@@ -333,6 +333,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    // Pausa da app
     @Override
     protected void onPause() {
         super.onPause();
@@ -344,12 +345,14 @@ public class QuizActivity extends AppCompatActivity {
         activityManager.moveTaskToFront(getTaskId(), 0);
     }
 
+    // Continuação app
     @Override
     protected void onResume() {
         super.onResume();
         isPaused = false;
     }
 
+    // Remove toolbar
     protected void removeTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -358,6 +361,7 @@ public class QuizActivity extends AppCompatActivity {
         //Remove notification bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

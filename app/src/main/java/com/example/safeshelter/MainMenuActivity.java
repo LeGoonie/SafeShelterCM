@@ -31,6 +31,7 @@ public class MainMenuActivity extends AppCompatActivity {
     boolean isPaused;
     Handler collapseNotificationHandler;
 
+    //Criação de todos os botões do MainMenu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
