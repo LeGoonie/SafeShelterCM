@@ -51,8 +51,6 @@ public class MazeActivity extends Activity {
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "TiltMazes");
 
-        mSelectMazeIntent = new Intent(MazeActivity.this, SelectMazeActivity.class);
-
         // Build the About Dialog
         /*mAboutDialog = new Dialog(MazeActivity.this);
         mAboutDialog.setCancelable(true);

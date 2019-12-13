@@ -85,10 +85,6 @@
             android:name="com.miniapps.maze.MazeActivity"
             android:excludeFromRecents="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.miniapps.maze.SelectMazeActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
